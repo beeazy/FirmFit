@@ -1,0 +1,1 @@
+export default ['./classesSchema.ts'];
