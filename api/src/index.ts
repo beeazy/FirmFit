@@ -1,14 +1,19 @@
 import express from 'express';
 import usersRouter from './routes/users/index';
+import classRoutes from './routes/classes/index';
+
 const port = 3000;
 
 
 const app = express();
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 app.get('/', (req, res) => {
     res.send('Hello World');
 })
 
-app.use('/users', usersRouter)
+app.use('/users', usersRouter);
+app.use('/classes', classRoutes);
 
 
 app.listen(port, () => {
