@@ -10,6 +10,7 @@ import { classesTable } from '../../db/classesSchema';
 import { validateData } from '../../middlewares/validationMiddleware';
 import { z } from 'zod'
 import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
+import { verifyAdmin, verifyTeacher, verifyToken } from '../../middlewares/authMiddleware';
 
 // import {
 //     enrollMember,
@@ -38,14 +39,14 @@ const router = Router();
 router.get('/', listClasses);
 
 // Create a new class
-router.post('/', validateData(createClassSchema), createClass);
+router.post('/', verifyToken, verifyAdmin, verifyTeacher, validateData(createClassSchema), createClass);
 
 // Get details of a specific class by ID
 router.get('/:id', getClassById);
 
-router.put('/:id', validateData(updateClassSchema), updateClass);
+router.put('/:id', verifyTeacher, validateData(updateClassSchema), updateClass);
 
-router.delete('/:id', deleteClass);
+router.delete('/:id', verifyTeacher, deleteClass);
 
 // // Enroll a member in a class
 // router.post('/:id/enroll', enrollMember);

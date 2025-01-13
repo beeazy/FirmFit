@@ -1,5 +1,5 @@
 import express from 'express';
-import usersRouter from './routes/users/index';
+import usersRouter from './routes/auth/index';
 import classRoutes from './routes/classes/index';
 
 const port = 3000;
@@ -12,7 +12,7 @@ app.get('/', (req, res) => {
     res.send('Hello World');
 })
 
-app.use('/users', usersRouter);
+app.use('/auth', usersRouter);
 app.use('/classes', classRoutes);
 
 
