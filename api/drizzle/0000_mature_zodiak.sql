@@ -3,8 +3,8 @@ CREATE TABLE "classes" (
 	"name" varchar(255) NOT NULL,
 	"description" text,
 	"capacity" integer,
-	"trainerId" integer NOT NULL,
-	"durationMinutes" integer NOT NULL,
+	"trainer_id" integer NOT NULL,
+	"duration_minutes" integer NOT NULL,
 	"price" double precision NOT NULL,
 	"schedule" jsonb NOT NULL
 );

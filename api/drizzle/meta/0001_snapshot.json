@@ -1,6 +1,6 @@
 {
-  "id": "fa070426-feec-4d2e-8ffb-b2297eba816d",
-  "prevId": "00000000-0000-0000-0000-000000000000",
+  "id": "4695c874-1cf6-4f4d-807a-c00b177fbec3",
+  "prevId": "fa070426-feec-4d2e-8ffb-b2297eba816d",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
@@ -52,12 +52,6 @@
         "duration_minutes": {
           "name": "duration_minutes",
           "type": "integer",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "price": {
-          "name": "price",
-          "type": "double precision",
           "primaryKey": false,
           "notNull": true
         },
