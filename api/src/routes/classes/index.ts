@@ -5,12 +5,12 @@ import {
     getClassById, 
     updateClass,
     deleteClass,
-} from './classesController';
-import { classesTable } from '../../db/classesSchema';
-import { validateData } from '../../middlewares/validationMiddleware';
+} from './classesController.js';
+import { classesTable } from '../../db/classesSchema.js';
+import { validateData } from '../../middlewares/validationMiddleware.js';
 import { z } from 'zod'
 import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
-import { verifyAdmin, verifyTeacher, verifyToken } from '../../middlewares/authMiddleware';
+import { verifyAdmin, verifyTeacher, verifyToken } from '../../middlewares/authMiddleware.js';
 
 // import {
 //     enrollMember,

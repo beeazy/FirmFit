@@ -1,9 +1,9 @@
 import express from 'express';
-import usersRouter from './routes/auth/index';
-import classRoutes from './routes/classes/index';
+import usersRouter from './routes/auth/index.js';
+import classRoutes from './routes/classes/index.js';
+import serverless from 'serverless-http';
 
 const port = 3000;
-
 
 const app = express();
 app.use(express.json());
@@ -16,25 +16,10 @@ app.use('/auth', usersRouter);
 app.use('/classes', classRoutes);
 
 
-app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
-})
+if (process.env.NODE_ENV === 'dev') {
+    app.listen(port, () => {
+        console.log(`Server is running on port ${port}`);
+    })
+}
 
-// Authentication:
-/* 
-    POST /auth/login
-    POST /auth/register
-    User Management:
-    GET /users
-    POST /users
-    Class Management:
-    GET /classes
-    POST /classes
-    PUT /classes/:id
-    Booking System:
-    GET /bookings
-    POST /bookings
-    Payments:
-    POST /payments
-    GET /payments 
-*/
+export const handler = serverless(app);

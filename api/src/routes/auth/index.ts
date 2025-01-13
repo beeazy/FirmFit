@@ -1,8 +1,8 @@
 import { Router } from 'express';
-import { listUsers, createUser, getUserById, updateUserById, deleteUserById, loginUser } from './usersController';
-import { validateData } from '../../middlewares/validationMiddleware';
-import { createUsersSchema, loginSchema } from '../../db/usersSchema';
-import { verifyUserId } from '../../middlewares/authMiddleware';
+import { listUsers, createUser, getUserById, updateUserById, deleteUserById, loginUser } from './usersController.js';
+import { validateData } from '../../middlewares/validationMiddleware.js';
+import { createUsersSchema, loginSchema } from '../../db/usersSchema.js';
+import { verifyUserId } from '../../middlewares/authMiddleware.js';
 
 const router = Router();
 router.get('/', listUsers)

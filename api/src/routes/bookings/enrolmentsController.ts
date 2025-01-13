@@ -1,8 +1,8 @@
 import { Request, Response } from 'express';
-import { enrollmentsTable } from '../../db/enrollmentsSchema';
-import { classesTable } from '../../db/classesSchema';
+import { enrollmentsTable } from '../../db/enrollmentsSchema.js';
+import { classesTable } from '../../db/classesSchema.js';
 import { eq } from 'drizzle-orm';
-import { db } from '../../db/index';
+import { db } from '../../db/index.js';
 
 
 

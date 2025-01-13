@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
-import { db } from '../../db/index';
-import { classesTable } from '../../db/classesSchema';
+import { db } from '../../db/index.js';
+import { classesTable } from '../../db/classesSchema.js';
 import { eq } from 'drizzle-orm';
 
 // List all classes
