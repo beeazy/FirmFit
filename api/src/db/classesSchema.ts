@@ -1,4 +1,4 @@
-import { integer, pgTable, varchar, text, jsonb, doublePrecision } from "drizzle-orm/pg-core";
+import { integer, pgTable, varchar, text, jsonb } from "drizzle-orm/pg-core";
 
 export const classesTable = pgTable("classes", {
   id: integer().primaryKey().generatedAlwaysAsIdentity(),
