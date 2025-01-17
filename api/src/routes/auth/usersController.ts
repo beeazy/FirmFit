@@ -61,8 +61,14 @@ export async function loginUser(req: Request, res: Response) {
         const user: {
             id: any;
             email: any; 
-            password?: string 
+            password?: string,
+            username: string,
+            role: string,
+            gymId: any,
+            createdAt: any,
+            updatedAt: any
         }[] = await db.select().from(usersTable).where(eq(usersTable.email, req.body.email) || eq(usersTable.username, req.body.username));
+        
         if (user.length === 0) {
             return res.status(400).json({ message: 'Authentication failed' });
         }
@@ -70,24 +76,23 @@ export async function loginUser(req: Request, res: Response) {
         if (!user[0].password) {
             return res.status(400).json({ message: 'Authentication failed' });
         }
+
         const validPassword = await bcrypt.compare(req.body.password, user[0].password);
         if (!validPassword) {
             return res.status(400).json({ message: 'Authentication failed' });
         }
 
-        // hide password from response
+        // Hide password from response
         delete user[0].password;
 
-        // create token
-
+        // Create token
         const token = jwt.sign(
-            { id: user[0].id, email: user[0].email },
+            { user: user[0] },
             process.env.JWT_SECRET as string,
             { expiresIn: '30d' }
         );
 
-
-        res.status(200).json({ status: 'success', user: user[0], token });
+        res.status(200).json({ status: 'success', email: user[0].email, token });
     } catch (error) {
         res.status(500).json({ message: "Something went wrong, try again" });
     }
